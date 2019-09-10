@@ -29,7 +29,7 @@ RUN apt-get update && apt-get dist-upgrade -yq && apt-get install -yq --fix-miss
 
 RUN php -r "copy('https://getcomposer.org/installer', 'composer-setup.php');" \
     && php composer-setup.php && php -r "unlink('composer-setup.php');" \
-    && mv composer.phar /usr/local/bin/composer && composer global require laravel/envoy --no-progress --no-suggest
+    && mv composer.phar /usr/local/bin/composer && composer global require hirak/prestissimo && composer global require laravel/envoy --no-progress --no-suggest
 
 ADD commands/configure-laravel.sh /usr/bin/configure-laravel
 RUN chmod +x /usr/bin/configure-laravel
