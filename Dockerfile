@@ -25,7 +25,7 @@ RUN apt-get update && apt-get dist-upgrade -yq && apt-get install -yq --fix-miss
     php7.3-dev php7.3-enchant php7.3-fpm php7.3-gd php7.3-intl php7.3-mysql \
     php7.3-opcache php7.3-pgsql php7.3-pspell php7.3-readline php7.3-recode \
     php7.3-soap php7.3-sqlite3 php7.3-tidy php7.3-xml php7.3-xmlrpc php7.3-xsl \
-    php7.3-zip php-memcached php-redis php-openssl libpng-dev jpegoptim optipng pngquant gifsicle
+    php7.3-zip php-memcached php-redis libpng-dev jpegoptim optipng pngquant gifsicle
 
 RUN php -r "copy('https://getcomposer.org/installer', 'composer-setup.php');" \
     && php composer-setup.php && php -r "unlink('composer-setup.php');" \
