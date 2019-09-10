@@ -1,7 +1,7 @@
 FROM debian:buster
 LABEL maintainer="slye@nubox.fr"
 
-RUN apt update && && apt dist-upgrade -yq apt install -yq locales ntp ntpdate && locale-gen fr_FR.UTF-8
+RUN apt update && apt dist-upgrade -yq apt install -yq locales ntp ntpdate && locale-gen fr_FR.UTF-8
 
 ENV DEBIAN_FRONTEND noninteractive
 ENV DEBCONF_NONINTERACTIVE_SEEN true
