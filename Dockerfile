@@ -1,7 +1,7 @@
 FROM debian:buster
 LABEL maintainer="slye@nubox.fr"
 
-RUN apt update && apt dist-upgrade -yq && apt install -yq --fix-missing locales ntp ntpdate && locale-gen fr_FR.UTF-8
+RUN apt update && apt dist-upgrade -yq && apt install -yq --fix-missing locales ntp ntpdate apt-utils && locale-gen fr_FR.UTF-8
 
 ENV DEBIAN_FRONTEND noninteractive
 ENV DEBCONF_NONINTERACTIVE_SEEN true
@@ -14,9 +14,9 @@ ENV PATH="${PATH}:/root/.composer/vendor/bin"
 ENV TMPDIR=/tmp
 
 RUN apt install -yq --fix-missing wget curl zip unzip git software-properties-common ssh-askpass \
-    apt-utils zip unzip openssl libgd-tools imagemagick mc lynx bzip2 make g++ \
+    zip unzip openssl libgd-tools imagemagick mc lynx bzip2 make g++ \
     ca-certificates apt-transport-https redis-server curl git-extras git-flow gconf2 \
-    python3-software-properties build-essential gnupg libpq-dev mysql-client
+    python3-software-properties build-essential gnupg libpq-dev mariadb-client
 
 RUN wget -O /etc/apt/trusted.gpg.d/php.gpg https://packages.sury.org/php/apt.gpg \
     && sh -c 'echo "deb https://packages.sury.org/php/ $(lsb_release -sc) main" > /etc/apt/sources.list.d/php.list'
