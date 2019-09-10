@@ -24,7 +24,7 @@ RUN wget -O /etc/apt/trusted.gpg.d/php.gpg https://packages.sury.org/php/apt.gpg
 RUN apt-get update && apt-get dist-upgrade -yq && apt-get install -yq --fix-missing php7.3 php7.3-bcmath php7.3-bz2 php7.3-cli php7.3-common php7.3-curl \
     php7.3-dev php7.3-enchant php7.3-fpm php7.3-gd php7.3-intl php7.3-mysql \
     php7.3-opcache php7.3-pgsql php7.3-pspell php7.3-readline php7.3-recode \
-    php7.3-soap php7.3-sqlite3 php7.3-tidy php7.3-xml php7.3-xmlrpc php7.3-xsl \
+    php7.3-soap php7.3-sqlite3 php7.3-tidy php7.3-xml php7.3-xmlrpc php7.3-xsl php7.3-mbstring \
     php7.3-zip php-memcached php-redis libpng-dev jpegoptim optipng pngquant gifsicle
 
 RUN php -r "copy('https://getcomposer.org/installer', 'composer-setup.php');" \
@@ -43,16 +43,4 @@ RUN wget https://phar.phpunit.de/phpunit.phar \
 
 RUN apt-get -yq clean && apt-get clean all && apt-get autoclean -yq \
     && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/* \
-    && apt-get dist-upgrade && apt-get autoremove -yq \
-    && php --version \
-    && composer --version \
-    && phpunit --version \
-    && nodejs --version \
-    && npm --version \
-    && envoy -V
-
-EXPOSE 80 3306
-
-WORKDIR /var/www/html/
-
-CMD ["php7.3-fpm", "-g", "daemon off;"]
+    && apt-get dist-upgrade && apt-get autoremove -yq
